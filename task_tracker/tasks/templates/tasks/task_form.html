@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create/Update Task</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        table {
+            text-align: center;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 10px;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .btn-group .btn {
+            margin-right: 5px;
+        }
+        
+        .btn-back {
+            background-color: red;
+        }
+        
+        .btn-create {
+            background-color: green;
+        }
+        
+        .btn-space {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ form.instance.pk|yesno:"Update Task,Create Task" }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-create">{{ form.instance.pk|yesno:"Update,Create" }}</button>
+        </form>
+        <table>
+            <tr>
+                <td>
+                    <a href="{% url 'task_list' %}" class="btn btn-back btn-space">Back to Task List</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

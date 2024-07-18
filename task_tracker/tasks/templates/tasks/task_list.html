@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        table {
+            text-align: center;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 10px;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .btn-group .btn {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task List</h1>
+        <div class="btn-group">
+            <a href="{% url 'task_create' %}" class="btn btn-primary">Create New Task</a>
+        </div>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="{% url 'task_update' task.id %}" class="btn btn-secondary">Update</a>
+                        <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

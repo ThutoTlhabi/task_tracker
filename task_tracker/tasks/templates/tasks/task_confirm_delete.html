@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #f2f2f2;
+            padding-top: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 2;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container .mt-3 {
+            margin-top: 10px;
+        }
+        
+        .container .mt-3 a {
+            font-size: 16px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Are you sure you want to delete "{{ task.title }}"?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="container mt-3">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+                <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
