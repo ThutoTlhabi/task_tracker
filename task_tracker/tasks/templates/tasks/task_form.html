@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Create/Update Task</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -14,7 +15,6 @@
             align-items: center;
             justify-content: flex-start;
             height: 100vh;
-            background-color: #f2f2f2;
         }
         
         h1 {
@@ -67,16 +67,18 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-create">{{ form.instance.pk|yesno:"Update,Create" }}</button>
+            <button type="submit" class="btn btn-create" aria-label="Create or update task">{{ form.instance.pk|yesno:"Update,Create" }}</button>
         </form>
         <table>
             <tr>
                 <td>
-                    <a href="{% url 'task_list' %}" class="btn btn-back btn-space">Back to Task List</a>
+                    <a href="{% url 'task_list' %}" class="btn btn-back btn-space" aria-label="Back to Task List">Back to Task List</a>
                 </td>
             </tr>
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

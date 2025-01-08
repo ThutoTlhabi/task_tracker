@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Task List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -14,7 +15,6 @@
             align-items: center;
             justify-content: flex-start;
             height: 100vh;
-            background-color: #f2f2f2;
         }
         
         h1 {
@@ -46,7 +46,7 @@
     <div class="container">
         <h1>Task List</h1>
         <div class="btn-group">
-            <a href="{% url 'task_create' %}" class="btn btn-primary">Create New Task</a>
+            <a href="{% url 'task_create' %}" class="btn btn-primary" aria-label="Create new task">Create New Task</a>
         </div>
         <table>
             <tr>
@@ -58,14 +58,16 @@
                 <td>{{ task.title }}</td>
                 <td>
                     <div class="btn-group">
-                        <a href="{% url 'task_update' task.id %}" class="btn btn-secondary">Update</a>
-                        <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'task_update' task.id %}" class="btn btn-secondary" aria-label="Update task">Update</a>
+                        <a href="{% url 'task_delete' task.id %}" class="btn btn-danger" aria-label="Delete task">Delete</a>
                     </div>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
